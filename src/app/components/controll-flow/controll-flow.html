@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isOfferCodeAvl"> Do you have Offer Code <br>
+
+    </div>
+    @if(isOfferCodeAvl ==true){
+        <div class="col-3">
+        <input type="text" class="form-control" placeholder="Enter Offer Code">
+    </div>
+    }
+    
+</div>
+<!-- example of if-else condition in angular -->
+<div class="row">
+
+    <div class="col-3">
+        @if(isToggled()==true){
+            <div class="bg-success p-3 mt-2">
+                Success Block
+            </div>
+        }@else{
+            <div class="bg-danger p-3 mt-2">
+            Danger Block
+            </div>
+            }    
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success mt-2" (click)="toggleDisplay()">Toggle</button>
+    </div>
+</div>
+<hr>
+<!-- example of multiple if-else condition in angular -->
+<div class="row">
+    <div class="col-3">
+        <input type="text" placeholder="%" class="form-control" [(ngModel)]="studentTotalMarks">
+    </div>
+    <div class="col-3">
+    @if(studentTotalMarks >= 75){
+        <div class="bg-success p-3 mt-2">
+            Student Has A Grade
+        </div>
+    }@else if(studentTotalMarks >= 50){
+        <div class="bg-warning p-3 mt-2">
+            Student Has B Grade
+        </div>
+    }@else if(studentTotalMarks >= 35){
+        <div class="bg-primary p-3 mt-2">
+            Student Has C Grade
+        </div>
+    }@else{
+        <div class="bg-danger p-3 mt-2">
+            Student Fails
+        </div>
+    }
+    </div>
+</div>
+<hr>
+<!-- example of for loop in angular -->
+
+<div class="row">
+    <div class="col-3">
+        <h4>Available Offers:</h4>
+        <ul>
+            @for(offer of offerList; track $index){
+                <li>{{offer}}</li>
+            }
+        </ul>
+    </div>
