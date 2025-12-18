@@ -66,3 +66,39 @@
             }
         </ul>
     </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <h4>Employee List:</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Emp Id</th>
+                    <th>Emp Name</th>
+                    <th>Emp Dept</th>
+                    <th>Emp Position</th>
+                    <th>Emp Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @for(emp of employeeList; track $index){
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.age}}</td>
+                        <td>{{emp.position}}</td>
+                        <td>
+                            @if(emp.isActive == true){
+                                <span class="badge bg-success">Active</span>
+                            }@else{
+                                <span class="badge bg-danger">Inactive</span>
+                            }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>

@@ -4,6 +4,7 @@ import { Signal } from './components/signal/signal';
 import { Variables } from './components/variables/variables';
 import { NotFound } from './components/not-found/not-found';
 import { ControllFlow } from './components/controll-flow/controll-flow';
+import { DynamicCssClass } from './components/dynamic-css-class/dynamic-css-class';
 
 export const routes: Routes = [
 
@@ -28,6 +29,10 @@ export const routes: Routes = [
     {
         path: 'controll-flow',
         component: ControllFlow
+    },
+    {
+        path: 'dyamic-component',
+        component: DynamicCssClass
     },
     {
         path: '**',
