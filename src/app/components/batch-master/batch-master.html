@@ -19,14 +19,14 @@
               </tr>
             </thead>
             <tbody>
-                @for (item of batchList; track $index) {
+                @for (item of batchList(); track $index) {
                 <tr>
                   <td scope="new">{{$index+1}}</td>
                   <td>{{item.batchName}}</td>
                   <td>{{item.createdDate}}</td>
                   <td>
-                    <button class="btn btn-sm btn-primary me-2">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <button class="btn btn-sm btn-primary me-2" (click)="onEditBatch(item)">Edit</button>
+                    <button class="btn btn-sm btn-danger" (click)="onDeleteBatch(item.batchId)">Delete</button>
                   </td>
 
                 }
@@ -55,13 +55,18 @@
               <input type="text" name="batchName" class="form-control" [(ngModel)]="newBatchObj.batchName" id="batchName" placeholder="Enter Batch Name">
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label for="createdDate" name="createdDate" class="form-label">Created Date</label>
               <input type="date" class="form-control" [(ngModel)]="newBatchObj.createdDate" id="createdDate">
-            </div>
+            </div> -->
 
             <div class="d-grid gap-2">
-              <button type="submit" (click)="onSaveBatch()" class="btn btn-success">Save</button>
+                @if (newBatchObj.batchId===0) {
+                  <button type="submit" (click)="onSaveBatch()" class="btn btn-success">Save</button>
+                } @else {
+                  <button type="submit" (click)="onUpdateBatch()" class="btn btn-warning">Update</button>
+
+                }
               <button type="reset" (click)="onClearBatch()" class="btn btn-secondary">Clear</button>
             </div>
           </form>
