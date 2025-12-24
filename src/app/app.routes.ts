@@ -5,6 +5,7 @@ import { Variables } from './components/variables/variables';
 import { NotFound } from './components/not-found/not-found';
 import { ControllFlow } from './components/controll-flow/controll-flow';
 import { DynamicCssClass } from './components/dynamic-css-class/dynamic-css-class';
+import { BatchMaster } from './components/batch-master/batch-master';
 
 export const routes: Routes = [
 
@@ -33,6 +34,10 @@ export const routes: Routes = [
     {
         path: 'dyamic-component',
         component: DynamicCssClass
+    },
+    {
+        path: 'batch',
+        component: BatchMaster
     },
     {
         path: '**',

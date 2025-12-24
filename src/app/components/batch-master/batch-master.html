@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Batch Master Management</h2>
+  
+  <div class="row">
+    <!-- Table Section - Col 8 -->
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h5 class="mb-0">Batch List</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Batch ID</th>
+                <th>Batch Name</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (item of batchList; track $index) {
+                <tr>
+                  <td scope="new">{{$index+1}}</td>
+                  <td>{{item.batchName}}</td>
+                  <td>{{item.createdDate}}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary me-2">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                  </td>
+
+                }
+                @if (batchList.length===0) {
+                    <tr >
+                    <td colspan="4" class="text-center py-3">No Records Found</td>
+                    </tr>
+                }
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Section - Col 5 -->
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h5 class="mb-0">Add/Edit Batch</h5>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="batchName" class="form-label">Batch Name</label>
+              <input type="text" name="batchName" class="form-control" [(ngModel)]="newBatchObj.batchName" id="batchName" placeholder="Enter Batch Name">
+            </div>
+
+            <div class="mb-3">
+              <label for="createdDate" name="createdDate" class="form-label">Created Date</label>
+              <input type="date" class="form-control" [(ngModel)]="newBatchObj.createdDate" id="createdDate">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" (click)="onSaveBatch()" class="btn btn-success">Save</button>
+              <button type="reset" (click)="onClearBatch()" class="btn btn-secondary">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
