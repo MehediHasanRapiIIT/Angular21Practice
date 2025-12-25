@@ -7,6 +7,7 @@ import { ControllFlow } from './components/controll-flow/controll-flow';
 import { DynamicCssClass } from './components/dynamic-css-class/dynamic-css-class';
 import { BatchMaster } from './components/batch-master/batch-master';
 import { ProjectCompetation } from './components/project-competation/project-competation';
+import { SignalFormEx } from './components/signal-form-ex/signal-form-ex';
 
 export const routes: Routes = [
 
@@ -43,6 +44,10 @@ export const routes: Routes = [
     {
         path: 'competation',
         component: ProjectCompetation
+    },
+    {
+        path: 'signal-form',
+        component: SignalFormEx
     },
     {
         path: '**',

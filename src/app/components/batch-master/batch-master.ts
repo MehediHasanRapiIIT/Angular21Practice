@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { NgIf } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { BatchService } from '../../service/batch-service';
 
 @Component({
   selector: 'app-batch-master',
@@ -14,27 +15,43 @@ export class BatchMaster {
   http = inject(HttpClient);
   //batchList: Batch[] = [];
   batchList = signal<Batch[]>([]);
+
+  batchService = inject(BatchService);
   
   constructor() {
     this.getAllBatches();
   }
 
   getAllBatches() {
-    this.http.get("https://api.freeprojectapi.com/api/FeesTracking/batches").subscribe({
+    // this.http.get("https://api.freeprojectapi.com/api/FeesTracking/batches").subscribe({
+    //   next:(result:any)=>{
+    //    this.batchList.set(result);
+    //   }
+    // })
+    this.batchService.getAllBatches().subscribe({
       next:(result:any)=>{
-       this.batchList.set(result);
+        this.batchList.set(result);
       }
     })
   }
   onSaveBatch() {
-    debugger;
-    this.http.post("https://api.freeprojectapi.com/api/FeesTracking/batches", this.newBatchObj).subscribe({
+
+    // this.http.post("https://api.freeprojectapi.com/api/FeesTracking/batches", this.newBatchObj).subscribe({
+    //   next:(result:any)=>{
+    //     debugger;
+    //     alert("Batch saved successfully");
+    //   },
+    //   error:(error:any)=>{
+    //     debugger;
+    //     alert(error.error.message);
+    //   }
+    // })
+    this.batchService.saveBatch(this.newBatchObj).subscribe({
       next:(result:any)=>{
-        debugger;
         alert("Batch saved successfully");
+        this.getAllBatches();
       },
       error:(error:any)=>{
-        debugger;
         alert(error.error.message);
       }
     })
