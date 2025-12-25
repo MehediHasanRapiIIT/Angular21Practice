@@ -8,12 +8,14 @@ import { DynamicCssClass } from './components/dynamic-css-class/dynamic-css-clas
 import { BatchMaster } from './components/batch-master/batch-master';
 import { ProjectCompetation } from './components/project-competation/project-competation';
 import { SignalFormEx } from './components/signal-form-ex/signal-form-ex';
+import { Login } from './components/login/login';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
 
     {
         path:'',
-        redirectTo: 'data-binding',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
 
@@ -23,7 +25,8 @@ export const routes: Routes = [
     },
     {
         path: 'signal',
-        component: Signal
+        component: Signal,
+        canActivate: [authGuard]
     },
     {
         path: 'variables',
@@ -39,7 +42,8 @@ export const routes: Routes = [
     },
     {
         path: 'batch',
-        component: BatchMaster
+        component: BatchMaster,
+        canActivate: [authGuard]
     },
     {
         path: 'competation',
@@ -48,6 +52,10 @@ export const routes: Routes = [
     {
         path: 'signal-form',
         component: SignalFormEx
+    },
+    {
+        path: 'login',
+        component: Login
     },
     {
         path: '**',

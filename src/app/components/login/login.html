@@ -1,0 +1,16 @@
+<div class="parent">
+    <div class="login-card text-center">
+        <h3 class="mb-4">Login</h3>
+        <form action="">
+            <div class="mb-3 text-start">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="emailId" placeholder="Enter email" [(ngModel)]="loginObj.emailId">
+            </div>
+            <div class="mb-3 text-start">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" [(ngModel)]="loginObj.password">
+            </div>
+            <button type="button" class="btn btn-primary w-100" (click)="onLogin()">Login</button>
+        </form>
+    </div>
+</div>
